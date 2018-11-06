@@ -11,5 +11,5 @@ Login as the user you created at install. Run the following commands
 wget https://git.io/fpfxT -O setup.bash
 sudo bash ./setup.bash
 ```
-When the sscript is complete the server will reboot.
+When the script is complete the server will reboot.
 
