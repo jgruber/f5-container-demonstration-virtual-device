@@ -20,7 +20,7 @@ docker pull f5devcentral/f5-as3-container:lastes
 docker pull f5devcentral/f5-api-services-gateway:latest
 
 cd /
-curl install-init.tar.gz -O
+wget https://github.com/jgruber/f5-container-demonstration-virtual-device/raw/master/install-init.tar.gz
 tar xvzf install-init.tar.gz
 systemctl daemon-reload
 systemctl enable docker.as3validator.service
