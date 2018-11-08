@@ -16,7 +16,7 @@ docker pull jgruber/as3validatortool:latest
 docker pull jgruber/f5-appsvcs-demo-web:latest
 docker pull jgruber/f5-appsvcs-demo:latest
 docker pull mongo:latest
-docker pull f5devcentral/f5-as3-container:lastes
+docker pull f5devcentral/f5-as3-container:latest
 docker pull f5devcentral/f5-api-services-gateway:latest
 
 usermod -g docker f5admin
