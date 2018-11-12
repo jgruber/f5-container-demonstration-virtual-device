@@ -20,6 +20,9 @@ docker pull f5devcentral/f5-api-services-gateway:latest
 
 usermod -g docker ubuntu
 
+cd /home/ubuntu
+wget https://raw.githubusercontent.com/jgruber/f5-appsvcs-demo/dev-udf/docker-compose.yml
+
 cd /
 wget https://github.com/jgruber/f5-container-demonstration-virtual-device/raw/dev-udf/install-init.tar.gz
 tar xvzf install-init.tar.gz
