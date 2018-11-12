@@ -21,7 +21,7 @@ docker pull f5devcentral/f5-api-services-gateway:latest
 usermod -g docker ubuntu
 
 cd /
-wget https://github.com/jgruber/f5-container-demonstration-virtual-device/raw/master/install-init.tar.gz
+wget https://github.com/jgruber/f5-container-demonstration-virtual-device/raw/dev-udf/install-init.tar.gz
 tar xvzf install-init.tar.gz
 systemctl daemon-reload
 systemctl enable docker.as3validator.service
