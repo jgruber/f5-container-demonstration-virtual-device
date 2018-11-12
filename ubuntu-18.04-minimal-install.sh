@@ -1,8 +1,7 @@
 #!/bin/bash
 
-if [ ! -d /home/f5admin ]; then
-    /usr/sbin/useradd --create-home --shell $(which bash) --groups sudo f5admin
-    echo "f5admin:f5admin" | /usr/sbin/chpasswd
+if [ ! -d /home/ubuntu ]; then
+    /usr/sbin/useradd --create-home --shell $(which bash) --groups sudo ubuntu
 fi
 
 apt update
@@ -13,13 +12,13 @@ apt update
 apt install -y docker-ce docker-compose
 docker pull v2tec/watchtower
 docker pull jgruber/as3validatortool:latest
-docker pull jgruber/f5-appsvcs-demo-web:latest
+docker pull jgruber/f5-appsvcs-demo-web:udf
 docker pull jgruber/f5-appsvcs-demo:latest
 docker pull mongo:latest
 docker pull f5devcentral/f5-as3-container:latest
 docker pull f5devcentral/f5-api-services-gateway:latest
 
-usermod -g docker f5admin
+usermod -g docker ubuntu
 
 cd /
 wget https://github.com/jgruber/f5-container-demonstration-virtual-device/raw/master/install-init.tar.gz
