@@ -1,0 +1,15 @@
+
+[Unit]
+Description=F5 Application Service Demo Web Container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop f5-appsvcs-demo-web
+ExecStartPre=-/usr/bin/docker rm f5-appsvcs-demo-web
+ExecStart=/usr/bin/docker run --name f5-appsvcs-demo-web -p 80:80 jgruber/f5-appsvcs-demo-web:udf
+
+[Install]
+WantedBy=multi-user.target

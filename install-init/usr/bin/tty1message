@@ -1,0 +1,45 @@
+#!/bin/bash
+
+dgw_interface=$(route -n|grep -m 1 "^0.0.0.0"|awk '{print $8}')
+dgw_interface_ip=$(ip addr show dev $dgw_interface 2>/dev/null|awk '/inet / {print $2}'|cut -d'/' -f1)
+
+BOLD='\033[1m'
+INVERTED='\033[7m'
+NONE='\033[00m'
+RED='\033[0;31m'
+WHITE='\033[1;37m'
+YELLOW='\033[1;33m'
+BLACK='\033[0;30m'
+BLACK_BG='\033[0;40m'
+CLEAR_TOP='\033[3;0f'
+CLEAR_BOTTOM='\033[40;120f'
+
+while true; do
+    clear
+    printf "${CLEAR_TOP}"
+    echo ""
+    printf "        ${RED}F5 Container Demonstration Virtual Device\n\n"
+    printf "${NONE}"
+    printf "${WHITE}"
+    echo "          Documentation URL "
+    echo "                 http://${dgw_interface_ip}"
+    echo ""
+    echo "          AS3 Declaration Validator "
+    echo "                 http://${dgw_interface_ip}:5000"
+    echo ""
+    echo "          SSH Access "
+    echo ""
+    printf "               ${WHITE}     Host: ${WHITE}${dgw_interface_ip}\n";
+    printf "               ${WHITE} Username: ${YELLOW}f5admin\n";
+    printf "               ${WHITE} Password: ${YELLOW}f5admin\n";
+    echo ""
+    echo ""
+    printf "               ${WHITE} ssh ${YELLOW}f5admin${WHITE}@${dgw_interface_ip}\n";
+    echo ""
+    echo ""
+    printf "${BLACK}"
+    printf "${BLACK_BG}"
+    printf "${CLEAR_BOTTOM}"
+    sleep 3;
+done
+

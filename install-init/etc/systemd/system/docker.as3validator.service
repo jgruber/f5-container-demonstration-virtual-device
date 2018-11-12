@@ -1,0 +1,15 @@
+
+[Unit]
+Description=AS3 Validator Container
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop as3validator
+ExecStartPre=-/usr/bin/docker rm as3validator
+ExecStart=/usr/bin/docker run --name as3validator -p 5000:3000 jgruber/as3validatortool
+
+[Install]
+WantedBy=multi-user.target

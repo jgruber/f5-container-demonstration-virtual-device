@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+
+  f5apigateway:
+    image: f5devcentral/f5-api-services-gateway:latest
+    restart: unless-stopped
+
+  mongo:
+    image: mongo
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - MONGO_INITDB_DATABASE=f5_appsvcs_demo
+
+  f5appsvcsdemo:
+    image: jgruber/f5-appsvcs-demo:latest
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - f5apigateway
+    links:
+      - mongo
+      - f5apigateway  
+    environment:
+      - F5_API_GW_HOST=f5apigateway
+      - F5_API_GW_HTTP_PORT=80
+      - MONGODB_URL=mongodb://root:secret@mongo/f5_appsvcs_demo?authSource=admin
